@@ -24,7 +24,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 
-import com.pivotaltracker.api.domain.model.PivotalStory;
+import com.pivotaltracker.api.domain.model.Story;
 
 /**
  * @author Anders Asplund
@@ -92,11 +92,11 @@ public class PivotalService {
         return response;
     }
 
-    public static String addStory(PivotalStory story, String projectId, String token) {
+    public static String addStory(Story story, String projectId, String token) {
         String url = PIVOTAL_API_URL + projectId + "/stories?token=" + token;
 
         String storyXml = "<story><story_type>" + story.getStoryType() + "</story_type><name>" + story.getName()
-                + "</name><requested_by>" + story.getRequestor() + "</requested_by>";
+                + "</name><requested_by>" + story.getRequestedBy() + "</requested_by>";
         if (!StringUtils.isBlank(story.getDescription()))
             storyXml += "<description>" + story.getDescription() + "</description>";
         storyXml += "</story>";
@@ -178,7 +178,7 @@ public class PivotalService {
         // return "Pivotal story created: " + urlNode.FirstChild.InnerText ?? "(couldn't load url)";
     }
 
-    public List<PivotalStory> getStories(String project) {
+    public List<Story> getStories(String project) {
         return Collections.emptyList();
         //
         // String url = PIVOTAL_API_URL + projectId + "/stories?token=" + token;

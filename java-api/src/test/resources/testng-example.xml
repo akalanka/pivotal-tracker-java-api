@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!-- this is an example to run parameterized tests -->
+<suite name="api-testing">
+    <test name="daos">
+        <parameter name="username" value="username" />
+        <parameter name="password" value="password" />
+        <parameter name="usertoken" value="aaaaaaa999999aaaaafffffaaaa9999a" />
+        <parameter name="project_id" value="999999" />
+        <parameter name="story_id" value="9999999" />
+        <parameter name="task_id" value="9999999" />
+        <classes>
+            <class name="com.pivotaltracker.api.domain.CredentialsDAOTest"/>
+            <class name="com.pivotaltracker.api.domain.ProjectDAOTest"/>
+            <class name="com.pivotaltracker.api.domain.StoryDAOTest"/>
+            <class name="com.pivotaltracker.api.domain.TaskDAOTest"/>
+        </classes>
+    </test>
+    <test name="utils">
+        <classes>
+            <class name="com.pivotaltracker.api.domain.UtilTest"/>
+        </classes>
+    </test>
+    <test name="converters">
+        <classes>
+            <class name="com.pivotaltracker.api.xstream.converters.CalendarConverterTest"/>
+        </classes>
+    </test>
+</suite>
