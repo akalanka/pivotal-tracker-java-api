@@ -31,9 +31,7 @@ public class MessageConverter implements Converter {
     public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context)
     {
         Message message = new Message();
-        reader.moveDown();
         message.setContent(reader.getValue());
-        reader.moveUp();
         return message;
     }
 
